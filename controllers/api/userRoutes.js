@@ -13,6 +13,7 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+    console.log(err)
   }
 });
 
@@ -48,13 +49,19 @@ router.post('/login', async (req, res) => {
   }
 });
 
-router.post('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).end();
+router.post('/logout', async (req, res) => {
+  try{
+    console.log(req.session)
+    if (req.session.logged_in) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+     else {
+      res.status(404).end();
+    }
+  } catch(err) {
+    console.log(err)
   }
 });
 
