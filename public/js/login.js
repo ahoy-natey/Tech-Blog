@@ -22,6 +22,8 @@ const loginFormHandler = async (event) => {
     }
   };
   
+
+  // New profiles need to be made, routes to profile if ok
   const signupFormHandler = async (event) => {
     event.preventDefault();
   
