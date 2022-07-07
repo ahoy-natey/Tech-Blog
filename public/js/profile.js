@@ -37,13 +37,42 @@ const newFormHandler = async (event) => {
       }
     }
   };
+
+
+  const editButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
   
+      const response = await fetch(`/api/post/${id}`, {
+        method: 'PUT',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/profile');
+      } else {
+        alert('Failed to edit post');
+      }
+    }
+  };
+  // Dyno create element
   document
     .querySelector('.new-post-form')
     .addEventListener('submit', newFormHandler);
+
+
+    // This is for the delete button
   var postlist = document.querySelector('.post-list')
+
   if (postlist) {
-    postlist.addEventListener('click', delButtonHandler)
+    postlist.addEventListener('click', (e) => {
+      console.log();
+      if (e.target.classList.contains("deleteB")) {
+        delButtonHandler(e)
+      } else if (e.target.classList.contains("editB")) {
+        editButtonHandler(e)
+
+      }
+    })
   }
   
   
