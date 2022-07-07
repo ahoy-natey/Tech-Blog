@@ -17,7 +17,7 @@
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
         <a href="/profile">Profile</a> |
-        <a href="/">Dashboard</a> |
+        <a href="/">Main</a> |
 
         <button class="no-button" id="logout">logout</button>
         
@@ -27,6 +27,7 @@
       </nav>
     </header>
     <main class="container container-fluid mt-5">
+      
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
